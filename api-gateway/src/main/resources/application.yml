@@ -11,6 +11,11 @@ spring:
           - Path=/user-service/v1/users
         filters:
           - RewritePath=/user-service/v1/users, /v1/users
+          - name: CircuitBreaker
+            args:
+              name: userServiceCircuitBreaker
+              fallbackUri: forward:/fallback
+
       routes[1]:
         id: invoice-service-route
         uri: http://localhost:7002
@@ -18,6 +23,32 @@ spring:
           - Path=/invoice-service/v1/invoices
         filters:
           - RewritePath=/invoice-service/v1/invoices, /v1/invoices
+          - name: CircuitBreaker
+            args:
+              name: invoiceServiceCircuitBreaker
+              fallbackUri: forward:/fallback
 
 server:
   port: 6500
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      userServiceCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 5
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 50
+      invoiceServiceCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 5
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 50
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
