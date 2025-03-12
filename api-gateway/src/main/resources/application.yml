@@ -1,6 +1,14 @@
 spring:
   application:
     name: api-gateway
+  main:
+    allow-bean-definition-overriding: true
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/retail
+
 
   cloud:
     gateway:
@@ -53,8 +61,10 @@ management:
       exposure:
         include: "*"
 
+
 security:
   jwt: http://localhost:8080/realms/retail/protocol/openid-connect/certs
+
 
 logstash:
   host: localhost
