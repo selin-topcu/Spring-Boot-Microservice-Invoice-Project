@@ -25,3 +25,7 @@ feign:
       invoice-service-feign-client:
         connectTimeout: 5000
         readTimeout: 8000
+
+logstash:
+  host: localhost
+  port: 50000

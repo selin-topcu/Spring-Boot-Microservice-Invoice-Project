@@ -9,3 +9,7 @@ spring:
 
 server:
   port: 7002
+
+logstash:
+  host: localhost
+  port: 50000
