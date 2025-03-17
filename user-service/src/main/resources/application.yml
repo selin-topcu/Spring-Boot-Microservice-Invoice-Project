@@ -29,3 +29,8 @@ feign:
 logstash:
   host: localhost
   port: 50000
+
+management:
+  tracing:
+    propagation:
+      consume: W3C

@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Bean
     public SecurityFilterChain configure(HttpSecurity httpSecurity, JwtDecoder jwtDecoder, AuthenticationFailureHandler authenticationFailureHandler) throws Exception {
 
         httpSecurity.authorizeHttpRequests(authorize -> authorize

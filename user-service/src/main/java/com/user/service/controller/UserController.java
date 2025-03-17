@@ -21,6 +21,7 @@ public class UserController {
 
     @GetMapping("/users")
     public List<UserDto> getUsers(@RequestParam("ids") List<String> ids) {
+        log.info("Received request for ids : {} ", ids);
         return userService.getUsers(ids);
     }
 }
