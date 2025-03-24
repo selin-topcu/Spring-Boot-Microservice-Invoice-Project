@@ -15,6 +15,13 @@ logstash:
   port: 50000
 
 management:
+  metrics:
+    tags:
+      application: invoice-service
   tracing:
     propagation:
       consume: W3C
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus

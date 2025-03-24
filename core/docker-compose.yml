@@ -129,6 +129,26 @@ services:
     networks:
       - keycloak_network
 
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+    networks:
+      - keycloak_network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - keycloak_network
+
 networks:
   elk:
     driver: bridge
@@ -139,3 +159,4 @@ volumes:
   elasticsearch:
   postgres_data:
     driver: local
+  grafana-storage:
