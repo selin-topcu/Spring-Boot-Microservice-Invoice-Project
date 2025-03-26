@@ -54,3 +54,9 @@ logstash:
 consumer:
   topic:
     name: new-products-events
+
+logging:
+  level:
+    org.springframework.cache: TRACE
+    org.springframework.cache.interceptor: TRACE
+    com.github.benmanes.caffeine.cache: TRACE

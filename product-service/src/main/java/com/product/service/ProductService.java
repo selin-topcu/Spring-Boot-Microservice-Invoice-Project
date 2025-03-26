@@ -11,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -27,9 +25,19 @@ public class ProductService {
     public void storeAllProducts(ProductRequest productRequest) {
 
         List<ProductDTO> productDTOList = productRequest.getProductDTOList();
-        List<Product> products = objectMapper.convertValue(productDTOList, new TypeReference<>() {});
+        List<Product> products = objectMapper.convertValue(productDTOList, new TypeReference<>() {
+        });
 
         productRepository.saveAll(products);
     }
 
+    @Cacheable(value = "products", key = "#ids")
+    public List<ProductDTO> getProducts(List<String> ids) {
+        log.info("Calling database to get ids: {} ", ids);
+
+        List<Product> products = productRepository.findAllByProductIdIn(ids);
+        List<ProductDTO> productDTOList = objectMapper.convertValue(products, new TypeReference<>() {});
+
+        return productDTOList;
+    }
 }
