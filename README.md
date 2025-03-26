@@ -1,0 +1,81 @@
+### Features Implementation Details
+
+🚀 **Framework**  
+   - Spring Boot
+
+🔌 **APIs**  
+   - Spring Boot
+
+🌍 **Architecture**  
+   - Microservice
+
+🖧 **Calling APIs**  
+   - Open Feign Client
+
+💾 **Database Integration**  
+   - JPA
+
+🔄 **Database Migration**  
+   - Flyway
+
+📊 **Logging and Centralized Logging solution**  
+   - ELK Stack
+
+⚠️ **Exception handling**  
+   - Spring Boot
+
+🕵️‍♂️ **Distributed Tracing and Monitoring**  
+   - Micrometer
+
+📈 **Application Monitoring**  
+   - Spring Boot, Prometheus, Grafana
+
+🐳 **Containerization**  
+   - Docker, Dockerfiles
+
+📜 **API Specification**  
+   - OpenAPI (Swagger)
+
+🎉 **Event Driven**  
+   - Kafka
+
+🧠 **Caching**  
+   - Spring Boot Caching  
+   - Caffein Caching
+
+🛡️ **Reliability**
+   - Bulkhead and Circuit Breaker in API Gateway  
+   - Retry in Open Feign
+   - Spring Retry in Kafka template Send
+
+🌐 **Source**  
+   - [Spring Initializr](https://start.spring.io/)
+   - [JWT](https://jwt.io/)
+   - [Elastic](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-api.html)
+   - [Grafana](https://grafana.com/grafana/dashboards/19004-spring-boot-statistics/)
+   - [Docker Kafka Configuration](https://github.com/conduktor/kafka-stack-docker-compose/blob/master/zk-single-kafka-multiple.yml)
+   - [Kafdrop](https://github.com/obsidiandynamics/kafdrop/blob/master/docker-compose/kafka-kafdrop/docker-compose.yaml)
+   - [Microservice Project](https://www.udemy.com/course/master-building-enterprise-microservices-in-depth-project/)
+
+
+### Project Structure 
+![image](https://github.com/user-attachments/assets/d23e3709-d833-4953-aeef-81b2bfd35753)
+
+### Keycloak
+![image](https://github.com/user-attachments/assets/7c2e9e8d-c763-4c08-afcf-2bd783d2ca57)
+
+### Elastic
+![image](https://github.com/user-attachments/assets/72e6ebd4-98bf-4150-8547-4a09f4bea477)
+
+### Prometheus
+![image](https://github.com/user-attachments/assets/85907d2e-a2c6-4a25-90cb-18c1b0a75235)
+
+### Grafana
+![image](https://github.com/user-attachments/assets/c50a23e7-7474-4084-9844-1793d5033ab9)
+
+### Open Api Swagger
+![image](https://github.com/user-attachments/assets/4f81e873-bde7-4a0d-b4fd-3525f0c66208)
+
+### Kafdrop
+![image](https://github.com/user-attachments/assets/80a6f8c5-e9d1-4296-a860-63a54cc7e294)
+
