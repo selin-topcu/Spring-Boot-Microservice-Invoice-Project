@@ -57,9 +57,12 @@
    - [Kafdrop](https://github.com/obsidiandynamics/kafdrop/blob/master/docker-compose/kafka-kafdrop/docker-compose.yaml)
    - [Microservice Project](https://www.udemy.com/course/master-building-enterprise-microservices-in-depth-project/)
 
+📂 **Postman Collection**  
+   - [demo-microservice.postman_collection.json](https://github.com/selin-topcu/Spring-Boot-Microservice-Invoice-Project/blob/main/demo-microservice.postman_collection.json)
+
 
 ### Project Structure 
-![image](https://github.com/user-attachments/assets/d23e3709-d833-4953-aeef-81b2bfd35753)
+![demo-project](https://github.com/user-attachments/assets/31003a60-b7bb-40d2-a2cc-951b08e5e0eb)
 
 ### Keycloak
 ![image](https://github.com/user-attachments/assets/7c2e9e8d-c763-4c08-afcf-2bd783d2ca57)
