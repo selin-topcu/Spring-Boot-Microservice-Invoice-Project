@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "489daa1d-3710-4637-b1b5-f1d06cf2f2b8",
+		"name": "demo-microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40777256"
+	},
+	"item": [
+		{
+			"name": "api-gateway",
+			"item": [
+				{
+					"name": "kafka",
+					"item": [
+						{
+							"name": "products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"productDTOList\": [\r\n    {\r\n      \"name\": \"product-6\",\r\n      \"description\": \"anything test description\",\r\n      \"price\": 50,\r\n      \"stockQuantity\": 1\r\n    },\r\n    {\r\n      \"name\": \"product-7\",\r\n      \"description\": \"anything test description\",\r\n      \"price\": 100,\r\n      \"stockQuantity\": 5\r\n    }\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:6500/v1/async/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "6500",
+									"path": [
+										"v1",
+										"async",
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6500/user-service/v1/users?ids=8a97e452-9511-4de2-b805-1ea5d82cc646",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6500",
+							"path": [
+								"user-service",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "8a97e452-9511-4de2-b805-1ea5d82cc646"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invoices",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6500/invoice-service/v1/invoices?userId=8a97e452-9511-4de2-b805-1ea5d82cc646",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6500",
+							"path": [
+								"invoice-service",
+								"v1",
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "8a97e452-9511-4de2-b805-1ea5d82cc646"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "elastic & kibana",
+			"item": [
+				{
+					"name": "kibana_system user password change",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testpass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "elastic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"testpass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/_security/user/kibana_system/_password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_security",
+								"user",
+								"kibana_system",
+								"_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "elastic login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testpass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "elastic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200"
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "invoice-service",
+			"item": [
+				{
+					"name": "invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7002/v1/invoices?userId=8a97e452-9511-4de2-b805-1ea5d82cc646",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"v1",
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "8a97e452-9511-4de2-b805-1ea5d82cc646"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7001/v1/users?ids=8a97e452-9511-4de2-b805-1ea5d82cc646",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "8a97e452-9511-4de2-b805-1ea5d82cc646"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "keycloak",
+			"item": [
+				{
+					"name": "login generate token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the response body to extract the access_token value\r",
+									"var responseBody = pm.response.json();\r",
+									"var accessToken = responseBody.access_token;\r",
+									"\r",
+									"// Set the access_token value to the environment variable named 'token'\r",
+									"pm.environment.set('token', accessToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "retail-user",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test123",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "retail-app-gateway",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/retail/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"retail",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product-service",
+			"item": [
+				{
+					"name": "get products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7003/v1/products?ids=1,2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7003",
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "1,2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
